@@ -3,7 +3,7 @@
 # Run `pod lib lint another_brother.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'another_brother'
+  s.name             = 'another_brother_vitorhp'
   s.version          = '0.0.1'
   s.summary          = 'A flutter plugin project for printing using the Brother printers.'
   s.description      = <<-DESC

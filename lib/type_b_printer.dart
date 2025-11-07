@@ -3,8 +3,8 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
 
-import 'package:another_brother/printer_info.dart';
-import 'package:another_brother/type_b_commands.dart';
+import 'package:another_brother_vitorhp/printer_info.dart';
+import 'package:another_brother_vitorhp/type_b_commands.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';

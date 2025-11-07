@@ -1,5 +1,5 @@
 
-import 'package:another_brother/label_info.dart';
+import 'package:another_brother_vitorhp/label_info.dart';
 
 abstract class ACustomPaper implements ALabelName {
   Map<String, dynamic> toMap();

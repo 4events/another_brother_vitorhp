@@ -55,7 +55,7 @@ A new flutter plugin project.
   # Linha importante 2: Remove o bitcode do framework da Brother
   # Este comando roda automaticamente durante o 'pod install' do usuário
   s.prepare_command = <<-CMD
-    xcrun bitcode_strip "BRLMPrinterKit.framework/BRLMPrinterKit" -r -o "BRLMPrinterKit.framework/BRLMPrinterKit"
+    xcrun bitcode_strip "Lib/BRLMPrinterKit.framework/BRLMPrinterKit" -r -o "Lib/BRLMPrinterKit.framework/BRLMPrinterKit"
   CMD
 
   

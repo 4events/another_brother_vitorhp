@@ -28,12 +28,13 @@ A new flutter plugin project.
   #s.vendored_frameworks = 'BRPtouchPrinterKit.framework'
   
   #s.dependency 'BRLMPrinterKit'
-  
+  #s.dependency 'BRLMPrinterKitBind'
+
+  # ------
   # tirei essas agora:
   # s.dependency 'BRLMPrinterKit_AB'
-  # s.dependency 'BROTHERSDK'
-  
-  #s.dependency 'BRLMPrinterKitBind'
+  s.dependency 'BROTHERSDK'
+  # ------
   
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'

@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'another_brother_vitorhp'
-  s.version          = '0.0.3'
+  s.version          = '0.0.4'
   s.summary          = 'A flutter plugin project for printing using the Brother printers.'
   s.description      = <<-DESC
 A new flutter plugin project.
@@ -18,8 +18,8 @@ A new flutter plugin project.
 
   
   #s.preserve_paths = 'Lib/BRLMPrinterKit.framework'
-  #s.xcconfig = { 'OTHER_LDFLAGS' => '-framework BRLMPrinterKit.framework' }
-  #s.ios.vendored_frameworks = 'Lib/BRLMPrinterKit.framework'
+  s.xcconfig = { 'OTHER_LDFLAGS' => '-framework BRLMPrinterKit.framework' }
+  s.ios.vendored_frameworks = 'Lib/BRLMPrinterKit.framework'
   #s.vendored_frameworks = 'BRLMPrinterKit.framework'
     
   #s.ios.vendored_frameworks = 'Lib/BRPtouchPrinterKit.framework'
@@ -51,9 +51,6 @@ A new flutter plugin project.
   #  brBind.public_header_files = 'Classes/PtouchPrinterKit-Bridging-Header.h'
   #  brBind.dependency 'BRLMPrinterKit'
   #end
-
-  # Framework da Brother
-  s.vendored_frameworks = 'BRLMPrinterKit.framework'
 
   # Linha importante 2: Remove o bitcode do framework da Brother
   # Este comando roda automaticamente durante o 'pod install' do usuário

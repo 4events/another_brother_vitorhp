@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'another_brother_vitorhp'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'A flutter plugin project for printing using the Brother printers.'
   s.description      = <<-DESC
 A new flutter plugin project.
@@ -32,7 +32,7 @@ A new flutter plugin project.
   #s.dependency 'BRLMPrinterKitBind'
   
   s.dependency 'Flutter'
-  s.platform = :ios, '9.0'
+  s.platform = :ios, '11.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386', 'ENABLE_BITCODE' => 'NO' }
@@ -52,33 +52,14 @@ A new flutter plugin project.
   #  brBind.dependency 'BRLMPrinterKit'
   #end
 
-  s.script_phases = [{
-    :name => 'Strip Bitcode from vendored frameworks (another_brother_vitorhp)',
-    :execution_position => :after_compile,
-    :shell_path => '/bin/sh',
-    :script => <<-'SCRIPT'
-  set -euo pipefail
+  # Framework da Brother
+  s.vendored_frameworks = 'BRLMPrinterKit.framework'
 
-  # Caminho do produto do target (quando este Pod é integrado dinamicamente)
-  APP_FRAMEWORKS_DIR="${TARGET_BUILD_DIR}/${WRAPPER_NAME}/Frameworks"
-
-  if [ -d "$APP_FRAMEWORKS_DIR" ]; then
-    echo "== Stripping bitcode from embedded frameworks in $APP_FRAMEWORKS_DIR =="
-    find "$APP_FRAMEWORKS_DIR" -type f \( -name "*.framework" -o -name "*.a" \) -print0 | while IFS= read -r -d '' ITEM; do
-      BIN="$ITEM"
-      # Se for .framework, o binário fica dentro com o mesmo nome do framework
-      if [ "${ITEM##*.}" = "framework" ]; then
-        FWNAME="$(basename "$ITEM" .framework)"
-        BIN="$ITEM/$FWNAME"
-      fi
-      if file "$BIN" | grep -q "Mach-O"; then
-        echo "Stripping bitcode: $BIN"
-        xcrun bitcode_strip -r "$BIN" -o "$BIN" || true
-      fi
-    done
-  fi
-  SCRIPT
-  }]
+  # Linha importante 2: Remove o bitcode do framework da Brother
+  # Este comando roda automaticamente durante o 'pod install' do usuário
+  s.prepare_command = <<-CMD
+    xcrun bitcode_strip "BRLMPrinterKit.framework/BRLMPrinterKit" -r -o "BRLMPrinterKit.framework/BRLMPrinterKit"
+  CMD
 
   
 end
